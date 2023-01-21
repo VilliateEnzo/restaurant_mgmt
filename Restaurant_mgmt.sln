@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restaurant_mgmt.Api", "Restaurant_mgmt.Api\Restaurant_mgmt.Api.csproj", "{F2137FEE-76B3-4F99-8D32-AE6211487DFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restaurant_mgmt.Core", "Restaurant_mgmt.Core\Restaurant_mgmt.Core.csproj", "{023EE5BE-8D83-48E2-950A-F80B7231601D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restaurant_mgmt.Dal", "Restaurant_mgmt.Dal\Restaurant_mgmt.Dal.csproj", "{12C5A45C-3005-4508-A3F7-8214AAF0D58C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F2137FEE-76B3-4F99-8D32-AE6211487DFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2137FEE-76B3-4F99-8D32-AE6211487DFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2137FEE-76B3-4F99-8D32-AE6211487DFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2137FEE-76B3-4F99-8D32-AE6211487DFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{023EE5BE-8D83-48E2-950A-F80B7231601D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{023EE5BE-8D83-48E2-950A-F80B7231601D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{023EE5BE-8D83-48E2-950A-F80B7231601D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{023EE5BE-8D83-48E2-950A-F80B7231601D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12C5A45C-3005-4508-A3F7-8214AAF0D58C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12C5A45C-3005-4508-A3F7-8214AAF0D58C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12C5A45C-3005-4508-A3F7-8214AAF0D58C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12C5A45C-3005-4508-A3F7-8214AAF0D58C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
