@@ -21,4 +21,8 @@
       <ProjectReference Include="..\Restaurant_mgmt.Core\Restaurant_mgmt.Core.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Data\migrations" />
+    </ItemGroup>
+
 </Project>

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Restaurant_mgmt.Core.Entities;
+using Restaurant_mgmt.Core.Enums;
 
 namespace Restaurant_mgmt.Dal.Data;
 
@@ -32,5 +33,11 @@ public class DataContext : IdentityDbContext <AppUser, AppRole, Guid, IdentityUs
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        
+        modelBuilder.HasPostgresEnum<QuantityUnitEnum>();
+        modelBuilder.HasPostgresEnum<RecipeTypeEnum>();
+        modelBuilder.HasPostgresEnum<ActionEnum>();
+        modelBuilder.HasPostgresEnum<EntityTypeEnum>();
+        modelBuilder.HasPostgresEnum<RecipeStatusEnum>();
     }
 }

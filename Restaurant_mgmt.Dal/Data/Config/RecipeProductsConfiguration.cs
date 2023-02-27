@@ -20,5 +20,9 @@ public class RecipeProductsConfiguration: IEntityTypeConfiguration<RecipeProduct
             .HasOne(rp => rp.Product)
             .WithMany(p => p.RecipeProducts)
             .HasForeignKey(rp => rp.ProductId);
+
+        builder
+            .Property(e => e.QuantityUnit)
+            .HasColumnType("quantity_unit_enum");
     }
 }

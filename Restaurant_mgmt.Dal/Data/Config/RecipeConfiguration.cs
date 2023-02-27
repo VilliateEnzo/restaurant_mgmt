@@ -28,6 +28,16 @@ public class RecipeConfiguration : IEntityTypeConfiguration<Recipe>
         builder.Property(x => x.Price)
             .HasColumnType("Decimal(18,2)");
 
+        builder
+            .Property(e => e.TypeEnum)
+            .IsRequired()
+            .HasColumnType("recipe_type_enum");
+        
+        builder
+            .Property(e => e.Status)
+            .IsRequired()
+            .HasColumnType("recipe_status_enum");
+        
         // builder.Property(x => x.Status)
         //     .IsRequired()
         //     .HasConversion<ProductStatusEnum>()
