@@ -1,6 +1,7 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Restaurant_mgmt.Core.Entities;
@@ -11,32 +12,38 @@ namespace Restaurant_mgmt.Dal.Services;
 
 public class TokenService : ITokenService
 {
+    private readonly UserManager<AppUser> _userManager;
     private readonly SymmetricSecurityKey _key;
-    public TokenService(IConfiguration config)
+    public TokenService(IConfiguration config, UserManager<AppUser> userManager)
     {
+        _userManager = userManager;
         _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"] ?? string.Empty));
     }
 
-    public string CreateToken(AppUser user)
+    public async Task<string> CreateToken(AppUser user)
     {
-        var claims = new List<Claim>()
+        List<Claim> claims = new()
         {
             new(JwtRegisteredClaimNames.NameId, user.UserName),
             new(JwtRegisteredClaimNames.Email, user.Email)
         };
 
-        var credentials = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
+        IList<string> roles = await _userManager.GetRolesAsync(user);
+        
+        claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
 
-        var tokenDescriptor = new SecurityTokenDescriptor
+        SigningCredentials credentials = new(_key, SecurityAlgorithms.HmacSha512Signature);
+        
+        SecurityTokenDescriptor tokenDescriptor = new()
         {
             Subject = new ClaimsIdentity(claims),
             Expires = DateTime.Now.AddDays(7),
             SigningCredentials = credentials
         };
 
-        var tokenHandler = new JwtSecurityTokenHandler();
+        JwtSecurityTokenHandler tokenHandler = new();
 
-        var token = tokenHandler.CreateToken(tokenDescriptor);
+        SecurityToken token = tokenHandler.CreateToken(tokenDescriptor);
 
         return tokenHandler.WriteToken(token);
     }

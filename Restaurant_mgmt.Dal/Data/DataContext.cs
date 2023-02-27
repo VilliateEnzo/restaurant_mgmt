@@ -20,6 +20,7 @@ public class DataContext : IdentityDbContext <AppUser, AppRole, Guid, IdentityUs
     public DbSet<HistoryChange> HistoryChanges { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<RecipeProduct> RecipeProducts { get; set; }
+    public DbSet<RestaurantUser> RestaurantUsers { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

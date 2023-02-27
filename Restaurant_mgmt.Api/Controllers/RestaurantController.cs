@@ -6,6 +6,7 @@ using Restaurant_mgmt.Core.Interfaces;
 
 namespace Restaurant_mgmt.Controllers;
 
+[Authorize]
 public class RestaurantController : BaseApiController
 {
     private readonly IRestaurantService _restaurantService;
@@ -32,7 +33,7 @@ public class RestaurantController : BaseApiController
     {
         try
         {
-            return Ok(await _restaurantService.CreateRestaurantsAsync(request));
+            return Ok(await _restaurantService.CreateRestaurantsAsync(request, User));
         }
         catch (EntityAlreadyExistsException e)
         {

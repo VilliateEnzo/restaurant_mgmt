@@ -8,5 +8,5 @@ public class AppUser : IdentityUser<Guid>
         
     public DateTime LastActiveAt { get; set; } = DateTime.UtcNow;
     
-    public ICollection<Restaurant>? Restaurants { get; set; }
+    public ICollection<RestaurantUser>? RestaurantUsers { get; set; }
 }

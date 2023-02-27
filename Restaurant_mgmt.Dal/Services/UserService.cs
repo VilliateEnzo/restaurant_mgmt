@@ -31,13 +31,17 @@ public class UserService : IUserService
         IdentityResult result = await _userManager.CreateAsync(user, request.Password);
         
         if (!result.Succeeded) throw new ApiException(400, "Bad request", "Error");
+        
+        //IdentityResult roleResult = await _userManager.AddToRoleAsync(user, "Member");
+        
+        //if(!roleResult.Succeeded) throw new ApiException(400, "Bad request", "Error");
 
         //todo: add token and photo url
         return new UserDto()
         {
             Username = user.UserName,
             Email = user.Email,
-            Token = _tokenService.CreateToken(user),
+            Token = await _tokenService.CreateToken(user),
             PhotoUrl = "asdassdas"
         };
     }
@@ -57,7 +61,7 @@ public class UserService : IUserService
         {
             Username = user.UserName,
             Email = user.Email,
-            Token = _tokenService.CreateToken(user),
+            Token = await _tokenService.CreateToken(user),
             PhotoUrl = "asdassdas"
         };
     }
