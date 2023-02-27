@@ -5,9 +5,9 @@ using Restaurant_mgmt.Core.Enums;
 
 namespace Restaurant_mgmt.Dal.Data.Config;
 
-public class ProductConfiguration : IEntityTypeConfiguration<Product>
+public class RecipeConfiguration : IEntityTypeConfiguration<Recipe>
 {
-    public void Configure(EntityTypeBuilder<Product> builder)
+    public void Configure(EntityTypeBuilder<Recipe> builder)
     {
         builder.Property(x => x.Name)
             .HasMaxLength(120)

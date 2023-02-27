@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Restaurant_mgmt.Core.DTOs;
 using Restaurant_mgmt.Core.Entities;
 using Restaurant_mgmt.Core.Errors;
+using Restaurant_mgmt.Core.Exceptions;
 using Restaurant_mgmt.Core.Interfaces;
 
 namespace Restaurant_mgmt.Dal.Services;
@@ -22,7 +23,7 @@ public class UserService : IUserService
     }
     public async Task<UserDto> Register(RegisterDto request)
     {
-        if (await UserExist(request.Email)) throw new ApiException(400, "Bad request", "User already exist");
+        if (await UserExist(request.Email)) throw new EntityAlreadyExistsException("User");
 
         AppUser user = _mapper.Map<AppUser>(request);
         user.UserName = request.Username.ToLower();

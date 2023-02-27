@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Restaurant_mgmt.Core.DTOs;
+using Restaurant_mgmt.Core.Exceptions;
 using Restaurant_mgmt.Core.Interfaces;
 
 namespace Restaurant_mgmt.Controllers;
@@ -16,5 +19,24 @@ public class RestaurantController : BaseApiController
     public async Task<IActionResult> GetRestaurants()
     {
         return Ok(await _restaurantService.GetRestaurantsAsync());
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetRestaurant(Guid id)
+    {
+        return Ok(await _restaurantService.GetRestaurantAsync(id));
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> CreateRestaurants(RestaurantDto request)
+    {
+        try
+        {
+            return Ok(await _restaurantService.CreateRestaurantsAsync(request));
+        }
+        catch (EntityAlreadyExistsException e)
+        {
+            return BadRequest(e.Message);
+        }
     }
 }

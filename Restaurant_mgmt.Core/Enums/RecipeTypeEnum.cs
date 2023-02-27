@@ -3,7 +3,7 @@
 namespace Restaurant_mgmt.Core.Enums;
 
 [JsonConverter(typeof(JsonStringEnumConverter))]
-public enum ProductType
+public enum RecipeTypeEnum
 {
     Drink,
     Food,

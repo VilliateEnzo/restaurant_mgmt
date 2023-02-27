@@ -14,10 +14,12 @@ public class DataContext : IdentityDbContext <AppUser, AppRole, Guid, IdentityUs
     }
     public DataContext(DbContextOptions<DataContext> options) : base(options){}
 
-    public DbSet<Product> Products { get; set; }
-    public DbSet<Restaurant> Restaurants { get; set; }
+    public DbSet<Recipe> Recipes { get; set; }
+    public DbSet<Restaurant?> Restaurants { get; set; }
     public DbSet<HistoryChange> HistoryChanges { get; set; }
-    
+    public DbSet<Product> Products { get; set; }
+    public DbSet<RecipeProduct> RecipeProducts { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if (!optionsBuilder.IsConfigured)

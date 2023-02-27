@@ -3,7 +3,7 @@
 namespace Restaurant_mgmt.Core.Enums;
 
 [JsonConverter(typeof(JsonStringEnumConverter))]
-public enum ProductStatusEnum
+public enum RecipeStatusEnum
 {
     InStock,
     OutOfStock,
